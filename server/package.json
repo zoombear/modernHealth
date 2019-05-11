@@ -4,8 +4,19 @@
   "description": "Modern Health take-home project server",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js --exec babel-node --"
   },
   "author": "Vanessa Archambault",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "node-json-db": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
 }
