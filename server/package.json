@@ -1,0 +1,11 @@
+{
+  "name": "modern-health-server",
+  "version": "1.0.0",
+  "description": "Modern Health take-home project server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vanessa Archambault",
+  "license": "ISC"
+}
