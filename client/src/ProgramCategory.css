@@ -1,0 +1,10 @@
+.category-section {
+  width: 33vw;
+  margin:0 auto;
+}
+
+.category-title {
+  font-size: 24px;
+  background-color: #3156CC;
+  color: white;
+}

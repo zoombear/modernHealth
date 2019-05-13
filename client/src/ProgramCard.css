@@ -1,0 +1,19 @@
+.card-section {
+  border-radius: 5px;
+  border: 1px solid #BBBBBB;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.card-description {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}

@@ -21,7 +21,7 @@ const getPrograms = () => {
 };
 
 const getProgram = id => {
-  const program = db.getData('/programs');
+  const programs = db.getData('/programs');
 
   return programs.find(program => {
     return program.id === id;

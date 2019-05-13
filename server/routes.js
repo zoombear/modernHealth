@@ -13,6 +13,7 @@ const initRoutes = (app) => {
 
   app.get('/api/programs/:id', (req, res) => {
     const id = parseInt(req.params.id, 10);
+    console.log(id);
     const program = getProgram(id);
 
     if (!program) {
