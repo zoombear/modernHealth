@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { loadDB } from './database';
+// import { loadDB } from './database';
 import { initRoutes } from './routes';
 
 const PORT = 5000;
@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
 });
 app.use(express.static('public'));
 
-loadDB();
+// loadDB();
 initRoutes(app);
 
 app.listen(PORT, () => {

@@ -1,47 +1,57 @@
-import JsonDB from 'node-json-db';
-const json_programs = require('./programs.json');
-const json_sections = require('./sections.json');
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: '',
+  host: 'localhost',
+  database: 'health',
+  password: '',
+  port: 5432,
+})
 
-const db = new JsonDB('../mainDB', true, true);
-
-const loadDB = () => {
-  console.log('Initializing database...');
-
-  db.delete('/programs');
-  db.push('/programs', json_programs, true);
-
-  db.delete('/sections');
-  db.push('/sections', json_sections, true);
-
-  console.log('Done!');
+const getPrograms = (request, response) => {
+  pool.query('SELECT * FROM programs ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).send(results.rows);
+  })
 };
 
-const getPrograms = () => {
-  return db.getData('/programs');
+const getProgram = (request, response) => {
+  const id = parseInt(request.params.id);
+  pool.query('SELECT * FROM programs WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    const theProgram =  results.rows.find(program => {
+      return program.id === id;
+    });
+    response.status(200).send(theProgram);
+  })
 };
 
-const getProgram = id => {
-  const programs = db.getData('/programs');
-
-  return programs.find(program => {
-    return program.id === id;
-  });
+const getSections = (request, response) => {
+    pool.query('SELECT * FROM sections ORDER BY id ASC', (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).send({sections: results.rows});
+    })
 };
 
-const getSections = () => {
-  return db.getData('/sections');
-};
-
-const getSection = id => {
-  const sections = db.getData('/sections');
-
-  return sections.find(section => {
-    return section.id === id;
-  });
+const getSection = (request, response) => {
+    const id = parseInt(request.params.id, 10);
+    pool.query('SELECT * FROM sections WHERE id = $1', [id], (error, results) => {
+      if (error) {
+        throw error
+      }
+      const theSection =  results.rows.find(section => {
+        return section.id === id;
+      });
+      response.status(200).send(theSection);
+    })
 };
 
 export {
-  loadDB,
   getPrograms,
   getProgram,
   getSections,
